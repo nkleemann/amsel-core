@@ -30,3 +30,4 @@ This is only the core: IO, GUI and interaction will sit in a new repository, lat
 - [ ] Offer meaningfull input parameters to influence the generation of phrases
 - [ ] Implement the MIDI protocol
 - [ ] Set up with WebMIDI to send notes via the IAC Driver
+
