@@ -27,6 +27,6 @@ This is only the core: IO, GUI and interaction will sit in a new repository, lat
 
 - [ ] Provide simple, functional & (mostly) well typed model of musical notes and their interaction in scales and phrases
 - [ ] Simulate different playing styles (Impressions)
-- [ ] Offer meaningfull input parameters to influence the generation of phrases
+- [ ] Offer meaningfull input parameters to influence the generation of phrases
 - [ ] Implement the MIDI protocol
 - [ ] Set up with WebMIDI to send notes via the IAC Driver
