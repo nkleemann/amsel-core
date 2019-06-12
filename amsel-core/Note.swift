@@ -5,6 +5,8 @@
 
 /// An octave has 12 SemiTones
 typealias SemiTone = Int
+/// A concrete scale with rootnote at [0]
+typealias ScalePattern = [Note]
 
 /**
  A simple definition of a Note.
@@ -36,7 +38,7 @@ typealias SemiTone = Int
  Negative values are allowed aswell,
  they represent octaves lower than C0.
 */
-struct Note {
+struct Note: Equatable {
     
     var val: SemiTone
     
@@ -56,4 +58,19 @@ struct Note {
 func transpose(note: Note, step: Step, dir: Direction) -> Note {
     let shift: SemiTone = step.rawValue * dir.rawValue
     return Note(val: note.val + shift)
+}
+
+func genScalePattern(from note: Note, scale: Scale, dir: Direction) -> ScalePattern {
+    var result: ScalePattern = []
+    var currentNote: Note    = note
+    
+    result.append(currentNote)
+    
+    for step in scale {
+        let nextNote: Note = transpose(note: currentNote, step: step, dir: dir)
+        result.append(nextNote)
+        currentNote = nextNote
+    }
+    
+    return result
 }
