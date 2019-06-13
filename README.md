@@ -22,7 +22,7 @@ new means of expression for artists- combining intent and reaction.
 *>This is a Work In Progress<*
 
 <p align="center">
-<img src="https://github.com/nkleemann/amsel-core/blob/master/doc/schematic.png" width="53.6%" height="40%"/>
+<img src="https://github.com/nkleemann/amsel-core/blob/master/doc/schematic.png" width="70%" height="60%"/>
 </p>
 
 This is the core: IO, GUI and interaction will sit in a new repository, later merged with this one.
