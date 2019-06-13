@@ -9,10 +9,12 @@
     1. Time signature is always 4/4
     2. Everything has (yet) to be quantized
     3. Swing is not supported (yet)
+    4. Every note or rest is generated in momento -
+       there is no pattern held in memory anywhere.
+       Continuity between generated events is reached
+       through playing-behavior and interpolation.
 */
 
-/// Sequence of notes and rests
-typealias Melody = [MelodyPart]
 /// Tonic with scale
 typealias Key = (Note, Scale)
 /// Musical tempo
@@ -20,12 +22,13 @@ typealias BPM = UInt
 
 /**
  A (monophonic) melody is a sequence
- containing Notes (N) and Rests (R).
+ of Events that are either
+ Notes (N) or Rests (R).
  
  Notes have values and a duration,
  Rests are nothing but duration.
 */
-enum MelodyPart {
+enum MelodyEvent {
     case N(Note),
          R(Rest)
     

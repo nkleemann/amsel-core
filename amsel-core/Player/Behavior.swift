@@ -1,8 +1,7 @@
 /**
  Data and functions related to
- the actual generation of
- melodies - the "Generative" part
- of this "Generative System".
+ the Behavior or style of
+ Amsel's melody generation.
 */
 
 /// How rapidly notes and rests will vary
