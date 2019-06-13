@@ -52,13 +52,13 @@ struct Note: Equatable {
     }
     
     /// Construct a note without timing information
-    init(val: SemiTone) {
+    init(_ val: SemiTone) {
         self.val = val
         self.dur = nil
     }
     
     /// Construct a note within melody-context
-    init(val: SemiTone, dur: Duration) {
+    init(_ val: SemiTone, _ dur: Duration) {
         self.val = val
         self.dur = dur
     }
@@ -74,7 +74,7 @@ struct Note: Equatable {
 */
 func transpose(note: Note, step: Step, dir: Direction) -> Note {
     let shift: SemiTone = step.rawValue * dir.rawValue
-    return Note(val: note.val + shift)
+    return Note(note.val + shift)
 }
 
 /**

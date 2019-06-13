@@ -28,4 +28,19 @@ typealias BPM = UInt
 enum MelodyPart {
     case N(Note),
          R(Rest)
+    
+    var val: SemiTone? {
+        switch self {
+            case .N(let note): return note.val
+            case .R(_):        return nil
+        }
+    }
+    
+    var dur: Duration? {
+        switch self {
+            case .N(let note): return note.dur
+            case .R(let rest): return rest.dur
+        }
+    }
 }
+
