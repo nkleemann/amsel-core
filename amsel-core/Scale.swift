@@ -1,5 +1,5 @@
 /*
- This file contains musical definitions of scales,
+ Musical definitions of scales,
  ie - sequences of steps to perform on a note.
  
  It also contains types needed to express the

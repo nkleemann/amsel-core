@@ -37,13 +37,30 @@ typealias ScalePattern = [Note]
  
  Negative values are allowed aswell,
  they represent octaves lower than C0.
+ 
+ Every note has a duration ONLY when it
+ is present in the context of a sequence
+ or melody.
 */
 struct Note: Equatable {
     
-    var val: SemiTone
+    let val: SemiTone
+    let dur: Duration?
     
     var octave: Int {
         return val / 12
+    }
+    
+    /// Construct a note without timing information
+    init(val: SemiTone) {
+        self.val = val
+        self.dur = nil
+    }
+    
+    /// Construct a note within melody-context
+    init(val: SemiTone, dur: Duration) {
+        self.val = val
+        self.dur = dur
     }
 }
 
@@ -60,17 +77,23 @@ func transpose(note: Note, step: Step, dir: Direction) -> Note {
     return Note(val: note.val + shift)
 }
 
-func genScalePattern(from note: Note, scale: Scale, dir: Direction) -> ScalePattern {
-    var result: ScalePattern = []
-    var currentNote: Note    = note
-    
-    result.append(currentNote)
+/**
+ Generate a concrete scale starting at a root note.
+ 
+ - parameters:
+ - root:  The root note
+ - scale: The scale to be generated
+
+ This is a non-recursive, concrete implementation of 'scanl' from Haskell.
+*/
+func genScalePattern(from root: Note, scale: Scale) -> ScalePattern {
+    var currentNote: Note    = root
+    var result: ScalePattern = [currentNote]
     
     for step in scale {
-        let nextNote: Note = transpose(note: currentNote, step: step, dir: dir)
+        let nextNote = transpose(note: currentNote, step: step, dir: .Up)
         result.append(nextNote)
         currentNote = nextNote
     }
-    
     return result
 }
