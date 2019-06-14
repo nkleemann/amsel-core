@@ -22,76 +22,76 @@ enum Direction: Int {
          Down = -1
 }
 
-let scales = [
+let scales: [String : Scale] = [
     "major":
-        [Step.Whole, Step.Whole, Step.Half, Step.Whole, Step.Whole, Step.Whole, Step.Half],
+        [.Whole, .Whole, .Half, .Whole, .Whole, .Whole, .Half],
     
     "minor":
-        [Step.Whole, Step.Half, Step.Whole, Step.Whole, Step.Half, Step.Whole, Step.Whole],
+        [.Whole, .Half, .Whole, .Whole, .Half, .Whole, .Whole],
     
     "harmonic-minor":
-        [Step.Whole, Step.Half, Step.Whole, Step.Whole, Step.Half, Step.AugSec, Step.Half],
+        [.Whole, .Half, .Whole, .Whole, .Half, .AugSec, .Half],
     
     "melodic-minor":
-        [Step.Whole, Step.Half, Step.Whole, Step.Whole, Step.Whole, Step.Whole, Step.Half],
+        [.Whole, .Half, .Whole, .Whole, .Whole, .Whole, .Half],
     
     "romanian-minor":
-        [Step.Whole, Step.Half, Step.AugSec, Step.Half, Step.Whole, Step.Half, Step.Whole],
+        [.Whole, .Half, .AugSec, .Half, .Whole, .Half, .Whole],
         
     // Named after the Dorian Greeks.
     "dorian-mode":
-        [Step.Whole, Step.Half, Step.Whole, Step.Whole, Step.Whole, Step.Half, Step.Whole],
+        [.Whole, .Half, .Whole, .Whole, .Whole, .Half, .Whole],
     
     // Ancient Greek Scale attributed to Sappho, the 7th-century-B.C. poet and musician.
     "mixolydian-mode":
-        [Step.Whole, Step.Whole, Step.Half, Step.Whole, Step.Whole, Step.Half, Step.Whole],
+        [.Whole, .Whole, .Half, .Whole, .Whole, .Half, .Whole],
     
     // Named after the anciant kingdom of Phrygia in Anatolia.
     "phrygian-mode":
-        [Step.Half, Step.Whole, Step.Whole, Step.Whole, Step.Half, Step.Whole, Step.Whole],
+        [.Half, .Whole, .Whole, .Whole, .Half, .Whole, .Whole],
     
     // Named after the anciant kingdom of Lydia in Anatolia.
     "lydian-mode":
-        [Step.Whole, Step.Whole, Step.Whole, Step.Half, Step.Whole, Step.Whole, Step.Half],
+        [.Whole, .Whole, .Whole, .Half, .Whole, .Whole, .Half],
     
     // Locrian is the word used to describe the inhabitants of the ancient Greek regions of Locris.
     "locrian-mode":
-        [Step.Half, Step.Whole, Step.Whole, Step.Half, Step.Whole, Step.Whole, Step.Whole],
+        [.Half, .Whole, .Whole, .Half, .Whole, .Whole, .Whole],
     
     // Based on the 'Mystic Chord'
     "prometheus":
-        [Step.Whole, Step.Whole, Step.Whole, Step.AugSec, Step.Half, Step.Whole],
+        [.Whole, .Whole, .Whole, .AugSec, .Half, .Whole],
     
     "spanish-gypsy":
-        [Step.Half, Step.AugSec, Step.Half, Step.Whole, Step.Half, Step.Whole, Step.Whole],
+        [.Half, .AugSec, .Half, .Whole, .Half, .Whole, .Whole],
     
     "blues":
-        [Step.AugSec, Step.Whole, Step.Half, Step.Half, Step.AugSec, Step.Whole],
+        [.AugSec, .Whole, .Half, .Half, .AugSec, .Whole],
     
     "super-locrian":
-        [Step.Half, Step.Whole, Step.Half, Step.Whole, Step.Whole, Step.Whole, Step.Whole],
+        [.Half, .Whole, .Half, .Whole, .Whole, .Whole, .Whole],
     
     // Still in minor, despite it's name
     "neopolitan-major":
-        [Step.Half, Step.Whole, Step.Whole, Step.Whole, Step.Whole, Step.Whole, Step.Half],
+        [.Half, .Whole, .Whole, .Whole, .Whole, .Whole, .Half],
     
     "neopolitan-minor":
-        [Step.Half, Step.Whole, Step.Whole, Step.Whole, Step.Half, Step.Whole, Step.Whole],
+        [.Half, .Whole, .Whole, .Whole, .Half, .Whole, .Whole],
     
     // originally published in a Milan journal as a musical challenge,
     // with an invitation to harmonize it in some way.
     "enigmatic":
-        [Step.Half, Step.AugSec, Step.Whole, Step.Whole, Step.Whole, Step.Half, Step.Half],
+        [.Half, .AugSec, .Whole, .Whole, .Whole, .Half, .Half],
     
     "pentatonic-neutral":
-        [Step.Whole, Step.AugSec, Step.Whole, Step.AugSec],
+        [.Whole, .AugSec, .Whole, .AugSec],
     
     "pentatonic-major":
-        [Step.Whole, Step.AugSec, Step.Whole, Step.Whole, Step.AugSec],
+        [.Whole, .AugSec, .Whole, .Whole, .AugSec],
     
     "pentatonic-minor":
-        [Step.AugSec, Step.Whole, Step.Whole, Step.AugSec, Step.Whole],
+        [.AugSec, .Whole, .Whole, .AugSec, .Whole],
     
     "pentatonic-blues":
-        [Step.AugSec, Step.Whole, Step.Half, Step.Half, Step.AugSec]
+        [.AugSec, .Whole, .Half, .Half, .AugSec]
 ]
