@@ -81,8 +81,8 @@ func transpose(note: Note, step: Step, dir: Direction) -> Note {
  Generate a concrete scale starting at a root note.
  
  - parameters:
- - root:  The root note
- - scale: The scale to be generated
+     - root:  The root note
+     - scale: The scale to be generated
 
  This is a non-recursive, concrete implementation of 'scanl' from Haskell.
 */

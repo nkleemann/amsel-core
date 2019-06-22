@@ -7,7 +7,7 @@
  to keep things simple here:
  
     1. Time signature is always 4/4
-    2. Everything has (yet) to be quantized
+    2. Everything has (yet) to be quantized to 'grid'
     3. Swing is not supported (yet)
     4. Every note or rest is generated in momento -
        there is no pattern held in memory anywhere.
