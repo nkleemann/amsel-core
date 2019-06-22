@@ -30,7 +30,7 @@ struct Noise {
      
      - returns: A skewed random integer value.
     */
-    func skewedRandInt(probabilities: [Double]) -> Int {
+    static func skewedRandInt(probabilities: [Double]) -> Int {
         // Sum of all probabilities (so that we don't have to require that the sum is 1.0):
         let sum = probabilities.reduce(0, +)
         // Random number in the range 0.0 <= rnd < sum :
@@ -51,3 +51,4 @@ struct Noise {
     /// Don't allow initialization since this is a namespace
     private init() {}
 }
+
