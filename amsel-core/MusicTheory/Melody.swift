@@ -30,7 +30,7 @@ typealias BPM = UInt
 */
 enum MelodyEvent {
     case N(Note),
-         R(Rest)
+         R(Duration)
     
     var val: SemiTone? {
         switch self {
@@ -42,7 +42,7 @@ enum MelodyEvent {
     var dur: Duration? {
         switch self {
             case .N(let note): return note.dur
-            case .R(let rest): return rest.dur
+            case .R(let rest): return rest
         }
     }
 }
