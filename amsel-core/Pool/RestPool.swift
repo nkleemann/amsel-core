@@ -2,11 +2,10 @@
  A pool of Rests (pure duration) the active
  player can choose from.
  */
-struct RestChoicePool {
-    let rests: [Duration]
+class RestChoicePool: Pool<Duration> {
     
+    /// Init with even probability distribution
     init() {
-        self.rests = Duration.allCases
+        super.init(elems: Duration.allCases)
     }
-    
 }

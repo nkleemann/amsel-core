@@ -1,5 +1,5 @@
 /**
- This Player is responsible for
+ The Player is responsible for
  choosing which notes and rests
  to play and is influenced by
  various parameters (noise / external data).

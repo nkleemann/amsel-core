@@ -2,11 +2,10 @@
  A pool of Notes the active
  player can choose from.
  */
-struct NoteChoicePool {
-    /// Can't be immutable since we need to set duration later
-    var notes: [Note]
+class NoteChoicePool: Pool<Note> {
     
+    /// Init with even probability distribution
     init(root: Note, scale: Scale) {
-        self.notes = genScalePattern(from: root, scale: scale)
+        super.init(elems: genScalePattern(from: root, scale: scale))
     }
 }
