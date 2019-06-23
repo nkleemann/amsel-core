@@ -18,9 +18,9 @@ struct Player {
     }
     
     
-//    func choose(notePool: NoteChoicePool, restPool: RestChoicePool) -> MelodyEvent {
-//        /// TODO: Choose Note / Rest and emit as MelodyEvent
-//    }
+    func choose(notePool: NoteChoicePool, restPool: RestChoicePool) -> MelodyEvent {
+        /// TODO: Choose Note / Rest and emit as MelodyEvent
+    }
     
     /// Don't allow initialization since this is a namespace
     private init() {}
