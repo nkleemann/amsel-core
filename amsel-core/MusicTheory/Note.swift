@@ -45,7 +45,7 @@ typealias ScalePattern = [Note]
 struct Note: Equatable {
     
     let val: SemiTone
-    let dur: Duration?
+    var dur: Duration?
     
     var octave: Int {
         return val / 12
@@ -96,4 +96,15 @@ func genScalePattern(from root: Note, scale: Scale) -> ScalePattern {
         currentNote = nextNote
     }
     return result
+}
+
+/**
+ Transpose a note an octave down or up.
+ 
+ - parameters:
+     - from: The note to be transposed
+     - dir: The direction of the transposition
+ */
+func octave(_ from: Note, _ dir: Direction) -> Note {
+    return Note(from.val + (12 * dir.rawValue))
 }

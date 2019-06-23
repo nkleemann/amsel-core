@@ -3,10 +3,10 @@
  player can choose from.
  */
 struct NoteChoicePool {
-    let notes: [Note]
+    /// Can't be immutable since we need to set duration later
+    var notes: [Note]
     
     init(root: Note, scale: Scale) {
         self.notes = genScalePattern(from: root, scale: scale)
     }
-
 }

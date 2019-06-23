@@ -22,6 +22,7 @@ enum Direction: Int {
          Down = -1
 }
 
+/// A collection of all supported scales
 let scales: [String : Scale] = [
     "major":
         [.Whole, .Whole, .Half, .Whole, .Whole, .Whole, .Half],
