@@ -1,5 +1,5 @@
 /**
- Namespace handling probabilities
+ Probabilities
  used on choosing notes, rests and
  MelodyEvents.
  
@@ -21,6 +21,18 @@ struct Probability {
     /// Probabilies for choosing a specific rest
     var restProbs: [Double]
     /// Probabilities for choosing a note or a rest
-    /// Start with even distribution
-    var evntProbs: [Double] = [0.5, 0.5]
+    var evntProbs: [Double]
+    
+    /// Init with even distributions
+    init(notePool: NoteChoicePool, restPool: RestChoicePool) {
+        let notePoolLength: Int = notePool.notes.count
+        let restPoolLength: Int = restPool.rests.count
+        
+        let medianNoteProb: Double = 1.0 / Double(notePoolLength)
+        let medianRestProb: Double = 1.0 / Double(restPoolLength)
+        
+        self.noteProbs = Array(repeatElement(medianNoteProb, count: notePoolLength))
+        self.restProbs = Array(repeatElement(medianRestProb, count: restPoolLength))
+        self.evntProbs = [0.5, 0.5]
+    }
 }

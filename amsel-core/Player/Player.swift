@@ -1,13 +1,9 @@
 /**
- Data and functions related to
- the 'Player' namespace of Amsel.
- 
- This namespace is responsible for
+ This Player is responsible for
  choosing which notes and rests
  to play and is influenced by
  various parameters (noise / external data).
 */
-
 struct Player {
     
     /// How rapidly notes and rests will vary
@@ -18,10 +14,13 @@ struct Player {
     }
     
     
-//    func choose(notePool: NoteChoicePool, restPool: RestChoicePool) -> MelodyEvent {
-//        /// TODO: Choose Note / Rest and emit as MelodyEvent
+//    func play(notePool: NoteChoicePool, restPool: RestChoicePool, probs: Probability) -> MelodyEvent {
+//        /// First choose to play rest or note
+//        switch (Noise.skewedRandInt(probabilities: probs.evntProbs))
+//
 //    }
     
-    /// Don't allow initialization since this is a namespace
-    private init() {}
+    
+    // func chooseNote(noteProbs: Probability)
+
 }
