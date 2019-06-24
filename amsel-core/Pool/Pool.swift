@@ -5,7 +5,7 @@
  */
 class Pool<E> {
     let elements: [E]
-    var probabilities: [Probability]
+    var probabilitySeq: [Probability]
 
     
     /**
@@ -14,40 +14,43 @@ class Pool<E> {
      of getting picked.
      */
     func pick() -> E {
-        let choiceIndex: Int = Noise.skewedRandInt(probs: self.probabilities)
+        let choiceIndex: Int = Noise.skewedRandInt(probs: self.probabilitySeq)
+        // No need to check bounds here since bound checking is
+        // already done in 'adjustProbabilities'.
         return elements[choiceIndex]
     }
     
     /**
      Set and change the probability sequence.
-     Avoid Overflow by chopping of overrunning elements.
+     Safety:
+        - Avoid crashing by ignoring non matching probability arrays
      
      - parameters:
         - probs: The new probability sequence
      */
     func adjustProbabilities(probs: [Probability]) -> Void {
-        /// PERF?
-        self.probabilities = Array(probs[0..<self.probabilities.count])
+        /// PERFORMANCE?
+        if (probabillitySeqIsValid(for: self, seq: probs)) {
+            self.probabilitySeq = probs
+        }
     }
     
     /// Init with even probability distribution
     init(elems: [E]) {
         self.elements = elems
-        
-        // Evenly distribute the same probability
-        let poolSize: Int = self.elements.count
+        let poolSize: Int = elems.count
         let medianProb: Double = 1 / Double(poolSize)
-        self.probabilities = Array(repeatElement(medianProb, count: poolSize))
+        self.probabilitySeq = Array(repeatElement(medianProb, count: poolSize))
     }
-    
+        
     /**
-     Safety function to check if the structure of the pool is valid.
-     the probabillity array and the element array have to be the same size
-     and they can't be empty.
+     Check if the structure of the pool is valid.
+     
+      A pool is valid only if:
+      - It's probability sequence if valid (see: Probability.swift)
+      - It has elements
      */
     func isValid() -> Bool {
-        return
-            (!self.elements.isEmpty && !self.probabilities.isEmpty) &&
-                (self.elements.count == self.probabilities.count)
+        return (!self.elements.isEmpty && probabillitySeqIsValid(for: self, seq: self.probabilitySeq))
     }
 }

@@ -16,3 +16,22 @@
  and E with 70% chance.
  */
 typealias Probability = Double
+
+/**
+ Check if a given probability sequence is valid for a given pool.
+ 
+ - parameters:
+    - for pool: The pool the sequence should be tested on
+    - seq: The sequence to be tested for validity
+ 
+ A probabilty sequence is valid only if
+ - It is not empty
+ - It has the same number of elements as pool.elements
+ - The sum of all it's probability values is 1.0
+ */
+func probabillitySeqIsValid<E>(for pool: Pool<E>, seq: [Probability]) -> Bool {
+    return
+        (!seq.isEmpty)                      &&
+        (pool.elements.count == seq.count)  &&
+        (seq.reduce(0.0, +) == 1.0)
+}
