@@ -9,8 +9,6 @@
  control and intent to take
  place in the generation of melodies.
 */
-
-
 struct Noise {
     
     /**
@@ -30,14 +28,14 @@ struct Noise {
      
      - returns: A skewed random integer value.
     */
-    static func skewedRandInt(probabilities: [Double]) -> Int {
+    static func skewedRandInt(probs: [Probability]) -> Int {
         // Sum of all probabilities (so that we don't have to require that the sum is 1.0):
-        let sum = probabilities.reduce(0, +)
+        let sum = probs.reduce(0, +)
         // Random number in the range 0.0 <= rnd < sum :
         let rnd = Double.random(in: 0.0 ..< sum)
         // Find the first interval of accumulated probabilities into which `rnd` falls:
         var accum = 0.0
-        for (i, p) in probabilities.enumerated() {
+        for (i, p) in probs.enumerated() {
             accum += p
             if rnd < accum {
                 return i

@@ -29,7 +29,7 @@ This is the core: IO, GUI and interaction will sit in a new repository, later me
 
 ### WIP
 
-- [ ] Provide simple, functional & (mostly) well typed model of musical notes and their interaction in scales and phrases
+- [*] Provide simple, functional & (mostly) well typed model of musical notes and their interaction in scales and phrases
 - [ ] Simulate different playing styles (Impressions)
 - [ ] Offer meaningfull input parameters to influence the generation of phrases
 - [ ] Implement the MIDI protocol
