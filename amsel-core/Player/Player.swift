@@ -6,21 +6,39 @@
 */
 struct Player {
     
-    /// How rapidly notes and rests will vary
-    enum Behavior: Equatable {
-        case Calm,
-             Average,
-             Hectic
+    /// Mimic intention of the User (Composer)
+    let behavior: Behavior
+    
+    
+    func play(notePool: NoteChoicePool, restPool: RestChoicePool) -> MelodyEvent {
+        // Play a note or play a rest?
+        let choice: PoolType = choosePool()
+        
+        switch (choice) {
+            // Play a note
+            case .NotePool:
+                /// TODO Decide on note duration (probs)
+                var note = notePool.pick()
+                note.dur = .Quarter // Set placeholder duration for now
+                return .N(note)
+            // "Play" a rest
+            default:
+                return .R(restPool.pick())
+        }
     }
     
+    func choosePool() -> PoolType {
+        let choiceIndex = Noise.skewedRandInt(probs: self.behavior.noteOrRestProbabiltySeq)
+        switch (choiceIndex) {
+        case 0:
+            return .NotePool
+        default:
+            return .RestPool
+        }
+    }
     
-//    func play(notePool: NoteChoicePool, restPool: RestChoicePool, probs: Probability) -> MelodyEvent {
-//        /// First choose to play rest or note
-//        switch (Noise.skewedRandInt(probabilities: probs.evntProbs))
-//
-//    }
-    
-    
-    // func chooseNote(noteProbs: Probability)
-
+    /// Initialize with median values
+    init() {
+        self.behavior = Behavior()
+    }
 }
