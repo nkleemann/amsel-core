@@ -7,7 +7,6 @@ class Pool<E> {
     let elements: [E]
     var probabilitySeq: [Probability]
 
-    
     /**
      Pick an element from the pool. The probability sequence of the pool
      is going to influence which element has a higher or lower chance
