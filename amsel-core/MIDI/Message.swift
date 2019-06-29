@@ -16,7 +16,6 @@
      "CCCC" is the MIDI channel (from 0 to 15)
      "PPP PPPP" is the pitch value (from 0 to 127, middle C := 60)
  
- 
     The NOTE OFF message is structured as follows:
  
      Status byte : 1000 CCCC
@@ -28,7 +27,20 @@
  
  (http://www.music-software-development.com/midi-tutorial.html)
 */
-enum MidiMessageType {
-    case NoteOn,
-         NoteOff
+enum MidiMessageType: UInt8 {
+    case NoteOn  = 0x90,
+         NoteOff = 0x80
+}
+
+/// Keeping it simple around here for now
+// typealias MIDIMessage = [UInt8]
+
+/**
+ A MIDI message is either of type
+ "NoteOn" or "NoteOff"
+ */
+struct MIDIMessage {
+    let type: MidiMessageType
+    let note: UInt8
+    let velo: UInt8
 }
