@@ -4,7 +4,7 @@
 */
 
 /// An interval of time - length set in relation to a whole bar
-enum Duration: Float, CaseIterable {
+enum Duration: Double, CaseIterable {
     case SixtyForth   = 0.015625,
          ThirtySecond = 0.03125,
          Sixteenth    = 0.0625,
