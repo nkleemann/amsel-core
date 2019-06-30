@@ -19,7 +19,19 @@ new means of expression for artists- combining intent and reaction.
 
 ## WIP Notes
 
-* Allthough I provide a sufficient subset of music theory in order to play monophonic harmonic and rhythmic 
+### Idea -- .compose files
+```
+A  major, duration: 4 bars
+E  minor, duration: 2 bars
+F  minor, duration: 2 bars
+G# major, duratiin: 4 bars
+```
+Those files could be parsed and serve as instruction which Note Pools to fill/flush and when to switch. 
+That way the User can provide harmony sequences to further strengthen control and intent.
+
+### MIDI Sync & Timing (Rhythm)
+
+Allthough I provide a sufficient subset of music theory in order to play monophonic harmonic and rhythmic 
 sequences the WebMIDI library I use in order to send the sequence to my
 DAW([WebMIDIKit](https://github.com/adamnemecek/WebMIDIKit/)) doesn't provide any means to sequence or
 time MIDI events. A solution would be to use AudioKit but I don't want to link to a huge library when I only need
