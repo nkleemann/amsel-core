@@ -31,7 +31,7 @@ That way the User can provide harmony sequences to further strengthen control an
 
 ### Other
 
--[] MIDI Sync
+-[ ] MIDI Sync
 
 ## Functionality
 
