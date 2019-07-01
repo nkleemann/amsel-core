@@ -28,11 +28,11 @@ Implement a very simple "harmony programming language":
 ```
 Calm
 
-loop, 8 cycles
-    A  major, 4 bars
-    E  minor, 2 bars
-    F  minor, 2 bars
-    G# major, 4 bars
+loop, cycles: 8
+    A  major, bars: 4
+    E  minor, bars: 2
+    F  minor, bars: 2
+    G# major, bars: 4
 end
 ```
 
