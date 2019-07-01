@@ -33,6 +33,11 @@ That way the User can provide harmony sequences to further strengthen control an
 
 - [ ] MIDI Sync
 
+## Notes
+
+I'm showing a demo of amsel together with [Os](https://github.com/lkamil/Os) on the 4th of july. 
+For this reason I created a [demo](https://github.com/nkleemann/amsel-core/tree/demo) branch where I provide this core with a command line interface and a main routine.
+
 ## Functionality
 
 *>This is a Work In Progress<*
