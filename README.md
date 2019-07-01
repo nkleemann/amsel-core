@@ -29,15 +29,9 @@ G# major, duration: 4 bars
 Those files could be parsed and serve as instruction which Note Pools to fill/flush and when to switch. 
 That way the User can provide harmony sequences to further strengthen control and intent.
 
-### MIDI Sync & Timing (Rhythm)
+### Other
 
-Allthough I provide a sufficient subset of music theory in order to play monophonic harmonic and rhythmic 
-sequences the WebMIDI library I use in order to send the sequence to my
-DAW ([WebMIDIKit](https://github.com/adamnemecek/WebMIDIKit/)) doesn't provide any means to sequence or
-time MIDI events. A solution would be to use AudioKit but I don't want to link to a huge library when I only need
-a very small fragment of it's functionality (yet). Maybe I have to build this on my own.
-
-MIDI Sync with the receiver (Ableton in my case) is on the whishlist aswell.
+- [] MIDI Sync
 
 ## Functionality
 
