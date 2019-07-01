@@ -4,9 +4,6 @@ This is the core of **Amsel** (engl: common blackbird) a tool for generative com
 - feedback loops (f.e.: visual input)
 - musical definitions
 
-**For a demo check out the [demo branch](https://github.com/nkleemann/amsel-core/tree/demo)
-where I'll build a command line utility using this core. It will parse custom `.compose` files (see [Ideas)](#Ideas)  and send MIDI notes to a given port.**
-
 ## Introduction
 
 Every generative system needs a set of input vectors to produce it's output. Frequently those input vectors are:
