@@ -4,8 +4,8 @@ This is the core of **Amsel** (engl: common blackbird) a tool for generative com
 - feedback loops (f.e.: visual input)
 - musical definitions
 
-**For a demo check out the [demo branch](https://github.com/nkleemann/amsel-core/tree/demo).
-where I'll build a command line utility using this core. It will use custom `.compose` files and send MIDI notes to a given port.**
+**For a demo check out the [demo branch](https://github.com/nkleemann/amsel-core/tree/demo)
+where I'll build a command line utility using this core. It will parse custom `.compose` files (see [Ideas)](#Ideas)  and send MIDI notes to a given port.**
 
 ## Introduction
 
@@ -23,14 +23,21 @@ new means of expression for artists- combining intent and reaction.
 ## Ideas
 
 ### .compose files
+
+Implement a very simple "harmony programming language":
 ```
-A  major, duration: 4 bars
-E  minor, duration: 2 bars
-F  minor, duration: 2 bars
-G# major, duration: 4 bars
+Calm
+
+loop, 8 cycles
+    A  major, 4 bars
+    E  minor, 2 bars
+    F  minor, 2 bars
+    G# major, 4 bars
+end
 ```
-Those files could be parsed and serve as instruction which Note Pools to fill/flush and when to switch. 
-That way the User can provide harmony sequences to further strengthen control and intent.
+
+Those files could be parsed and serve as simple scripts for which note pools to fill/flush and when to switch. 
+They also could provide a concrete description of player behavior.
 
 ### Other
 
