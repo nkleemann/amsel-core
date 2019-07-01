@@ -61,5 +61,6 @@ This is the core: IO, GUI and interaction will sit in a new repository, later me
 - [x] Implement the MIDI protocol
 - [x] Set up with WebMIDI to send notes via the IAC Driver
 - [ ] Simulate different playing styles (Impressions)
+- [ ] Implement 'Compose' language
 - [ ] Offer meaningfull input parameters to influence the generation of phrases
 
