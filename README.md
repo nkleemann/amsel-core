@@ -17,9 +17,9 @@ distance between the musicians intent and the algorithm.
 With **Amsel** I want to create a generative system working **with** me rather than **besides** me. I'm interesting in building a tool offering
 new means of expression for artists- combining intent and reaction.
 
-## WIP Notes
+## Ideas
 
-### Idea .compose files
+### .compose files
 ```
 A  major, duration: 4 bars
 E  minor, duration: 2 bars
