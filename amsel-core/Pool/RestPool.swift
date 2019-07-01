@@ -8,4 +8,14 @@ class RestChoicePool: Pool<Duration> {
     init() {
         super.init(elems: Duration.allCases)
     }
+    
+    /// Init with specific elements and probabilities
+    init(elems: [Duration], probs: [Probability]) {
+        
+        super.init(elems: elems)
+        
+        if probabillitySeqIsValid(for: self, seq: probs) {
+            self.adjustProbabilities(probs: probs)
+        }
+    }
 }

@@ -5,8 +5,9 @@
 struct Behavior {
     
     /// Probabilty to decide on playing a note or a rest
-    let noteOrRestProbabiltySeq: [Probability]
-    let playingPace: Pace
+    /// First value represents note, second rest choice
+    var noteOrRestProbabiltySeq: [Probability]
+    var playingPace: Pace
 
     /// How quickly notes and rests will vary
     enum Pace {

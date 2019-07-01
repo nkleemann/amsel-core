@@ -32,15 +32,36 @@ enum MidiMessageType: UInt8 {
          NoteOff = 0x80
 }
 
-/// Keeping it simple around here for now
-// typealias MIDIMessage = [UInt8]
-
 /**
- A MIDI message is either of type
- "NoteOn" or "NoteOff"
+ A MIDI message is the atom of the
+ MIDI protocol.
  */
 struct MIDIMessage {
     let type: MidiMessageType
     let note: UInt8
-    let velo: UInt8
+    let velocity: UInt8
+    
+    /// Init a MIDI message of a given type with two data bytes
+    init(type: MidiMessageType, noteVal: UInt8, velocity: UInt8) {
+        self.type = type
+        self.note = noteVal
+        self.velocity = velocity
+    }
+    
+    /**
+     Convert a MIDI message object to a MIDI message packet.
+     
+     A MIDI message packet is sequence of the status and
+     the two data bytes.
+     */
+    func toPacket() -> [UInt8] {
+        return [self.type.rawValue, self.note, self.velocity]
+    }
+    
+    /**
+     Convert a MIDI On message to a MIDI Off message.
+     */
+    func toMIDIOffMsg() -> MIDIMessage {
+        return MIDIMessage(type: .NoteOff, noteVal: self.note, velocity: self.velocity)
+    }
 }

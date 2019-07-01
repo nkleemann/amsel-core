@@ -45,19 +45,19 @@ typealias ScalePattern = [Note]
 struct Note: Equatable {
     
     let val: SemiTone
-    var dur: Duration?
+    var dur: Duration
     
     var octave: Int {
         return val / 12
     }
     
-    /// Construct a note without timing information
+    /// Construct a note, default duration is .Quarter
     init(_ val: SemiTone) {
         self.val = val
-        self.dur = nil
+        self.dur = .Quarter
     }
     
-    /// Construct a note within melody-context
+    /// Construct a note with timing information
     init(_ val: SemiTone, _ dur: Duration) {
         self.val = val
         self.dur = dur

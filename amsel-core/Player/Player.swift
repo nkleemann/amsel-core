@@ -7,7 +7,7 @@
 struct Player {
     
     /// Mimic intention of the User (Composer)
-    let behavior: Behavior
+    var behavior: Behavior
     
     /**
      Compose a melody of a given length.
@@ -42,8 +42,7 @@ struct Player {
             // Play a note
             case .NotePool:
                 /// TODO Decide on note duration (probs)
-                var note = notePool.pick()
-                note.dur = .Quarter // Set placeholder duration for now
+                let note = notePool.pick()
                 return .N(note)
             // "Play" a rest
             default:
@@ -65,6 +64,18 @@ struct Player {
         default:
             return .RestPool
         }
+    }
+    
+    /**
+     Adjust the players behavior by changing the probability sequence
+     for the choice between notes or rests.
+     
+     - Parameters:
+        - probs: Probabilty sequence to decide on playing a note or a rest
+     */
+    mutating func adjustPoolChoiceBehavior(probs: [Probability]) {
+        // TODO: Add validity check
+        self.behavior.noteOrRestProbabiltySeq = probs
     }
     
     /// Initialize with median values
