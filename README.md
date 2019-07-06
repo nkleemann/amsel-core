@@ -38,12 +38,7 @@ They also could provide a concrete description of player behavior.
 
 ### Other
 
-- [ ] MIDI Sync
-
-## Notes
-
-I'm showing a demo of amsel together with [Os](https://github.com/lkamil/Os) on the 4th of july. 
-For this reason I created a [demo](https://github.com/nkleemann/amsel-core/tree/demo) branch where I provide this core with a command line interface and a main routine.
+- [ ] Reimplement in C++ (Cross plattform & performance)
 
 ## Functionality
 
