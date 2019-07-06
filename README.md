@@ -42,7 +42,7 @@ They also could provide a concrete description of player behavior.
 
 ## Functionality
 
-*>This is a Work In Progress<*
+**This is a [Work In Progress](#wip)**
 
 <p align="center">
 <img src="https://github.com/nkleemann/amsel-core/blob/master/doc/schematic.png" width="90%" height="80%"/>
@@ -52,10 +52,17 @@ This is the core: IO, GUI and interaction will sit in a new repository, later me
 
 ### WIP
 
-- [x] Provide simple, functional & (mostly) well typed model of musical notes and their interaction in scales and phrases
-- [x] Implement the MIDI protocol
-- [x] Set up with WebMIDI to send notes via the IAC Driver
-- [ ] Simulate different playing styles (Impressions)
-- [ ] Implement 'Compose' language
-- [ ] Offer meaningfull input parameters to influence the generation of phrases
-
+- [ ] Generate meodic phrases
+    - [x] Provide simple, functional & well typed model of musical notes and their interaction in scales and phrases
+    - [ ] Simulate different playing styles (Impressions)
+    - [ ] Implement the *Compose* Language
+        - [ ] Provide API for switching key and playing styles
+        - [ ] Parse `.compose` files
+- [ ] MIDI
+      - [x] Implement the MIDI protocol
+      - [x] Set up with WebMIDI to send notes via the IAC Driver
+      - [ ] Allow for MIDI Sync
+      - [ ] Fix drifting of time
+- [ ] Interaction
+      - [ ] Offer meaningfull input parameters to influence the generation of phrases
+      - [ ] Integrate a feedback loop from visual input
