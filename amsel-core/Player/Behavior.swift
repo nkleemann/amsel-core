@@ -6,19 +6,21 @@ struct Behavior {
     
     /// Probabilty to decide on playing a note or a rest
     /// First value represents note, second rest choice
-    var noteOrRestProbabiltySeq: [Probability]
-    var playingPace: Pace
-
-    /// How quickly notes and rests will vary
-    enum Pace {
-        case Calm,
-             Average,
-             Hectic
-    }
+    var poolChoiceProbabillitySequence: [Probability]
     
-    /// Basic initialization with median values
-    init() {
-        self.noteOrRestProbabiltySeq = [0.5, 0.5]
-        self.playingPace = .Average
+    /// The note length the player will choose
+    var favoredNoteLength: Duration
+    
+    /**
+     Initialize a behavior for a player.
+     
+     - Parameters:
+        - poolChoiceProbs: The probabillity sequence to decide on choosing to
+                           play a note or a rest
+        - favNoteLen:      Which note Length to prefer when playing
+     */
+    init(poolChoiceProbs: [Probability], favNoteLen: Duration) {
+        self.poolChoiceProbabillitySequence = poolChoiceProbs
+        self.favoredNoteLength = favNoteLen
     }
 }

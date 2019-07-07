@@ -58,12 +58,10 @@ func play(melodyEvent: MelodyEvent, sendTo output: MIDIOutput?, tempo: BPM) -> V
             
             // Wait for the duration of the note until we can play the next note
             usleep(useconds_t(durationInMicroseconds))
-            break
         
         /// Play a rest
         case .R(let dur):
             usleep(useconds_t(dur.toMircoSeconds(songTempo: tempo)))
-            break
     }
 }
 

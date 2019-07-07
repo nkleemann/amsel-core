@@ -23,8 +23,6 @@ new means of expression for artists- combining intent and reaction.
 
 Implement a very simple "harmony programming language":
 ```
-Calm
-
 loop, cycles: 8
     A  major, bars: 4
     E  minor, bars: 2

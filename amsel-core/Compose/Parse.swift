@@ -1,9 +1,7 @@
 /**
  Parse .compose files.
  
- A .compose can look like this:
- 
- Calm
+ A .compose file can look like this:
  
  loop, cycles: 8
     A  major, bars: 4
