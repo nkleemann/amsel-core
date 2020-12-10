@@ -34,10 +34,6 @@ end
 Those files could be parsed and serve as simple scripts for which note pools to fill/flush and when to switch. 
 They also could provide a concrete description of player behavior.
 
-### Other
-
-- [ ] Reimplement in C++ (Cross plattform & performance)
-
 ## Functionality
 
 **This is a [Work In Progress](#wip).**
