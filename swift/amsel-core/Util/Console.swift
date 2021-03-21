@@ -1,8 +1,3 @@
-/**
- Everything related to the
- console amsle-demo is running in.
- */
-
 extension MelodyEvent {
     func info() -> String {
         guard let val = self.val else {
