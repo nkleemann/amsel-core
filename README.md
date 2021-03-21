@@ -1,27 +1,13 @@
 # :crystal_ball: :bird: amsel-core
 
-This is the core of **Amsel** (engl: common blackbird) a tool for generative composition producing monophonic phrases influenced by:
-- feedback loops (f.e.: visual input)
-- musical definitions
+A **tool** for generative composition producing monophonic phrases, organized into parts and influenced by probability sequences. **"Tool"** is stressed here because its aim is to be playable in a live context.
 
-## Introduction
+Originally written in Swift & currently being ported to Max as an abstraction.
 
-Every generative system needs a set of input vectors to produce it's output. Frequently those input vectors are:
-- noise (random approach)
-- huge datasets of MIDI or audio files (AI based approach)
-- external sensor data (measurement approach)
+## Original Doc (Swift)
 
-The output of such systems can stand on it's own as works of art - but often times those processes feel like a "black box approach" creating
-distance between the musicians intent and the algorithm. 
+Configure via `.compose` files or related messages to give a basic musical frame:
 
-With **Amsel** I want to create a generative system working **with** me rather than **besides** me. I'm interesting in building a tool offering
-new means of expression for artists- combining intent and reaction.
-
-## Ideas
-
-### .compose files
-
-Implement a very simple "harmony programming language":
 ```
 loop, cycles: 8
     A  major, bars: 4
@@ -31,32 +17,41 @@ loop, cycles: 8
 end
 ```
 
-Those files could be parsed and serve as simple scripts for which note pools to fill/flush and when to switch. 
-They also could provide a concrete description of player behavior.
+Instruct the `Player` object to emit a stream of MIDI events. The `Player` object holds two probability sequences which can be altered in real time to influence which musical event (note, accent, rest) will be played next.
 
-## Functionality
+Example configration:
 
-**This is a [Work In Progress](#wip).**
+```swift
+func playFlutyMelody(output: MIDIOutput?) -> Void {
+    
+    // Make a sheet
+    let aMinPent = Part(root: Note(69), scale: scales["pent-min"]!, length: 16)
+    let dMinPent = Part(root: Note(62), scale: scales["pent-min"]!, length: 16)
+    let cMajPent = Part(root: Note(60), scale: scales["pent-maj"]!, length: 16)
+    let fMajPent = Part(root: Note(53), scale: scales["pent-maj"]!, length: 16)
+    let sheetMelo  = Sheet(parts: [aMinPent, dMinPent, cMajPent, fMajPent])
+    
+    // Give it to the player
+    var player = Player(sheet: sheetMelo)
+    
+    // Instruct the player
+    player.behavior.favoredNoteLength       = .Eighth
+    player.behavior.noteOrRestProbabiltySeq = [0.5, 0.5]
+    
+    let allowedRests: [Duration]            = [.Eighth, .Quarter]
+    let allowedRestsProbs: [Probability]    = [0.7,     0.3     ]
+    
+    // Generate the melody
+    let melody = player.generateMelodyFromSheet(allowedRest: allowedRests, 
+                                                restProbs: allowedRestsProbs)
+    
+    // Play the melody
+    for event in melody.events {
+        sendWithRandomVelocity(melodyEvent: event, sendTo: output, tempo: 60)
+    }
+}
+```
 
 <p align="center">
 <img src="https://github.com/nkleemann/amsel-core/blob/master/doc/schematic.png" width="90%" height="80%"/>
 </p>
-
-This is the core: IO, GUI and interaction will sit in a new repository, later merged with this one.
-
-### WIP
-
-- [ ] Generate meodic phrases
-    - [x] Provide simple, functional & well typed model of musical notes and their interaction in scales and phrases
-    - [ ] Simulate different playing styles (Impressions)
-- [ ] Implement the *Compose* Language
-    - [ ] Provide API for switching key and playing styles
-    - [ ] Parse `.compose` files
-- [ ] MIDI
-	- [ ] Implement the MIDI protocol
-    - [x] Set up with WebMIDI to send notes via the IAC Driver
-    - [ ] Allow for MIDI Sync
-    - [ ] Fix drifting of time
-- [ ] Interaction
-    - [ ] Offer meaningfull input parameters to influence the generation of phrases
-    - [ ] Integrate a feedback loop from visual input
