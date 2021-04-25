@@ -11,8 +11,6 @@
     3. Swing is not supported (yet)
 */
 
-/// Tonic with scale
-typealias Key = (Note, Scale)
 /// Musical tempo
 typealias BPM = UInt
 
@@ -50,7 +48,7 @@ enum MelodyEvent {
         }
     }
     
-    var dur: Duration? {
+    var dur: Duration {
         switch self {
         case .N(let note): return note.dur
         case .R(let rest): return rest

@@ -33,7 +33,7 @@ import Foundation
      - output:      The output MIDI port
      - tempo:       The song tempo used for calculating the right halting times
  */
-func play(melodyEvent: MelodyEvent, sendTo output: MIDIOutput?, tempo: BPM) -> Void {
+func send(melodyEvent: MelodyEvent, sendTo output: MIDIOutput?, tempo: BPM) -> Void {
     
     guard let midiOutput = output else {
         print("[*] from 'send': MIDI Port closed")
@@ -58,17 +58,58 @@ func play(melodyEvent: MelodyEvent, sendTo output: MIDIOutput?, tempo: BPM) -> V
             
             // Wait for the duration of the note until we can play the next note
             usleep(useconds_t(durationInMicroseconds))
+            break
         
         /// Play a rest
         case .R(let dur):
             usleep(useconds_t(dur.toMircoSeconds(songTempo: tempo)))
+            break
     }
 }
+
+func sendWithRandomVelocity(melodyEvent: MelodyEvent, sendTo output: MIDIOutput?, tempo: BPM) -> Void {
+    
+    guard let midiOutput = output else {
+        print("[*] from 'send': MIDI Port closed")
+        return
+    }
+    
+    print("\(melodyEvent)")
+    switch melodyEvent {
+        
+    /// Play a note
+    case .N(let note):
+        
+        let midiOnMsg  = MIDIMessage(type: .NoteOn, noteVal: UInt8(note.val), velocity: UInt8.random(in: 90...127))
+        let midiOffMsg = midiOnMsg.toMIDIOffMsg()
+        
+        let durationInMicroseconds = note.dur.toMircoSeconds(songTempo: tempo)
+        
+        // WebMIDIKit API wants offset given in milliseconds and as Double
+        let offsetInMilliseconds = Double(durationInMicroseconds) * 0.001
+        
+        midiOutput.send(midiOnMsg.toPacket())
+        midiOutput.send(midiOffMsg.toPacket(), offset: offsetInMilliseconds)
+        
+        // Wait for the duration of the note until we can play the next note
+        usleep(useconds_t(durationInMicroseconds))
+        break
+        
+    /// Play a rest
+    case .R(let dur):
+        usleep(useconds_t(dur.toMircoSeconds(songTempo: tempo)))
+        break
+    }
+}
+
+
+
+
 
 /**
  Send a sequence of MelodyEvents to a MIDI Port while converting
  these events to MIDI messages.
  */
-func play(melody: Melody, to output: MIDIOutput?) -> Void {
+func send(melody: Melody, to output: MIDIOutput?) -> Void {
     // TODO Decide on keeping this (Option to hold melodies in memory)
 }
