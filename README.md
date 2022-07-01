@@ -1,8 +1,6 @@
 # amsel-core
 
-A **tool** for generative composition producing monophonic phrases, organized into parts and influenced by probability sequences. **"Tool"** is stressed here because its aim is to be playable in a live context.
-
-Originally written in Swift & currently being ported to Max as an abstraction.
+A tool for generative composition producing monophonic phrases, organized into parts and influenced by probability sequences. **"Tool"** is stressed here because its aim is to be playable in a live context.
 
 ## Original Doc (Swift)
 
